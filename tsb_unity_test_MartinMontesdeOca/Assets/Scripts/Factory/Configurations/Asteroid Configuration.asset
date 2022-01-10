@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0d0beea4b201b4f83b4e31fdb5b22c, type: 3}
+  m_Name: Asteroid Configuration
+  m_EditorClassIdentifier: 
+  asteroids:
+  - {fileID: 8554400036499648260, guid: 43f1aa575c71cdd4083c9bc197cadee9, type: 3}
+  - {fileID: 4601864901241831665, guid: 9d9db3adba1954f4d9bbdc4c2a2c307c, type: 3}
+  - {fileID: 7965547298519255032, guid: 37f4e43eec8479d49b3a456bc7779645, type: 3}
+  - {fileID: 1477213275535544753, guid: 06c2759318616854e95a608eeeaf1209, type: 3}
+  - {fileID: 5758668730665642507, guid: a5097a7921f0ddd4d9c51eb66de8367e, type: 3}
+  - {fileID: 5336349625891789769, guid: 36bdc13beea3c004f8b92ab0f656a567, type: 3}
+  - {fileID: 6935438478842392882, guid: e36d6b45adcd10740af08015f150975b, type: 3}
+  - {fileID: 3379427334529349520, guid: ab32646bda20bf24d93662e89c399de7, type: 3}
+  - {fileID: 5537280548405830541, guid: 0f446107662f30a469abc9488c79fda5, type: 3}
+  - {fileID: 4960974621300590555, guid: 76ff04e78d07c80488d6b1a7d385d0b4, type: 3}
