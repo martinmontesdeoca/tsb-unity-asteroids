@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class Laser : FactoryObject
 {
     [SerializeField]
     private float speed = 10f;
@@ -18,9 +18,9 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        /*transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         if (transform.position.y > 5.41f)
-            Destroy(transform.gameObject);
+            Destroy(transform.gameObject);*/
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : FactoryObject
 {
     [SerializeField]
     private int speed;
@@ -13,8 +13,8 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = transform.GetComponent<Rigidbody2D>();
-        Movement();
+        //rigidbody = transform.GetComponent<Rigidbody2D>();
+        //Movement();
     }
 
     private void Movement()

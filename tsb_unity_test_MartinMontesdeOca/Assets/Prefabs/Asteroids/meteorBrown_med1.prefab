@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 638307998250979500}
   - component: {fileID: 6853861347087237791}
   - component: {fileID: 4768081153238587180}
+  - component: {fileID: 629983227380969617}
+  - component: {fileID: -7022695793182224482}
+  - component: {fileID: -8458533442633140715}
   m_Layer: 0
   m_Name: meteorBrown_med1
   m_TagString: Untagged
@@ -149,3 +152,42 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.215
+--- !u!114 &629983227380969617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615605444021981020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConversionMode: 0
+--- !u!114 &-7022695793182224482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615605444021981020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e6019309fec1f4db67a1e2b47a3941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  forceSide: '"left"'
+--- !u!114 &-8458533442633140715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615605444021981020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d041ff6a2595e944b7c95233a3ff497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

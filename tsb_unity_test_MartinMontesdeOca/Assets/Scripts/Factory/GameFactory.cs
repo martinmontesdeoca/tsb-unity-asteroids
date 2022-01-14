@@ -14,18 +14,18 @@ public class GameFactory
         this.laserFactory = laserFactory;
     }
 
-    public Asteroid CreateAsteroid(string id, Vector3 position, Transform container)
+    public GameObject CreateAsteroid(string id, Vector3 position, Transform container)
     {
-        return asteroidFactory.Create(id, position, container);
+        return asteroidFactory.Create(id, position, container).gameObject;
     }
 
-    public PowerUp CreatePowerUp(string id)
+    public GameObject CreatePowerUp(string id)
     {
-        return powerUpFactory.Create(id);
+        return powerUpFactory.Create(id).gameObject;
     }
 
-    public Laser CreateLaser(string id, Vector3 position, Transform container)
+    public GameObject CreateLaser(string id, Vector3 position, Transform container)
     {
-        return laserFactory.Create(id, position, container);
+        return laserFactory.Create(id, position, container).gameObject;
     }
 }

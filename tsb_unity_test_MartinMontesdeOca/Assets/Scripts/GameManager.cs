@@ -6,14 +6,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager main;
-    EntityManager manager;
+    [SerializeField]
+    private Transform playerTransform;
+    public EntityManager entityManager;
+   // EntityManager manager;
     private void Awake()
     {
         main = this;
         _instance = this;
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        //  manager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        manager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        
     }
 
     private static GameManager _instance;
@@ -28,6 +31,22 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
+    public static bool IsGameOver()
+    {
+        if (GameManager.Instance == null)
+        {
+            return false;
+        }
+
+        return false;
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        return playerTransform;
+    }
+
     void Start()
     {
         

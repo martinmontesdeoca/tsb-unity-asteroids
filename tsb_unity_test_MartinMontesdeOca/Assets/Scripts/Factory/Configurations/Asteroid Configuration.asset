@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Asteroid Configuration
   m_EditorClassIdentifier: 
   asteroids:
-  - {fileID: 8554400036499648260, guid: 43f1aa575c71cdd4083c9bc197cadee9, type: 3}
+  - {fileID: 2449115290973096010, guid: 79dfce3323be45a429acb680eef243de, type: 3}
   - {fileID: 4601864901241831665, guid: 9d9db3adba1954f4d9bbdc4c2a2c307c, type: 3}
   - {fileID: 7965547298519255032, guid: 37f4e43eec8479d49b3a456bc7779645, type: 3}
   - {fileID: 1477213275535544753, guid: 06c2759318616854e95a608eeeaf1209, type: 3}

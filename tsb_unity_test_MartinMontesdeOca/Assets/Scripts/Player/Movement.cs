@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*if (onPlay)
+        if (onPlay)
         {
             Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             if (move.magnitude > 0)
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
                 Move(move, Input.GetAxis("Vertical"));
                 Rotation(move, Input.GetAxis("Horizontal"));
             }
-        }*/
+        }
     }
 
     private void Rotation(Vector2 moveData, float horizontal)
