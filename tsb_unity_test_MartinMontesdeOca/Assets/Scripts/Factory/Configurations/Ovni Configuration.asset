@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d64e337a394167468b4158950a1084c, type: 3}
+  m_Name: Ovni Configuration
+  m_EditorClassIdentifier: 
+  ovni:
+  - {fileID: 8035397023100484785, guid: 9fc0864c0d8875b4eb9513deb18c6700, type: 3}
+  - {fileID: 463721457011552319, guid: e27c34d803502a54b9e7eb9235355183, type: 3}
+  - {fileID: 3562091691796029359, guid: 40a82a5461614e1459cf90989f6e1c70, type: 3}

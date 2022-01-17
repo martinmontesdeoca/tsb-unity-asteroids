@@ -11,8 +11,7 @@ public class PowerUpFactory : MonoBehaviour
     }
 
     public PowerUp Create(string id)
-    {
-        var asteroid = powerUpConfiguration.GetPowerUpFromId(id);
-        return Instantiate(asteroid);
+    {       
+        return powerUpConfiguration.GetPowerUpFromId(id);
     }
 }

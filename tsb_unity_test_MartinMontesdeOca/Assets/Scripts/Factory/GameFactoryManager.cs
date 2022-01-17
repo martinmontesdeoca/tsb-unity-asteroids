@@ -17,16 +17,19 @@ public class GameFactoryManager : MonoBehaviour
     [SerializeField]
     private LaserConfiguration laserConfiguration;
     [SerializeField]
-    public AsteroidSpawner asteroidSpawner;
+    private OvniConfiguration ovniConfiguration;
     [SerializeField]
-    private PowerUpSpawner powerUpSpawner;
+    private ExplosionConfiguration explosionConfiguration;
     [SerializeField]
-    private LaserSpawner laserSpawner;
+    private ShieldConfiguration shieldConfiguration;
 
     public const int ASTEROID = 0;
     public const int POWERUP = 1;
     public const int LASER = 2;
-   
+    public const int OVNI = 3;
+    public const int EXPLOSION = 4;
+    public const int SHIELD = 5;
+
     // Entity prefab
     private Entity enemyEntityPrefab;
     private Entity objectEntity;
@@ -53,50 +56,82 @@ public class GameFactoryManager : MonoBehaviour
         var asteroidFactory = new AsteroidFactory(Instantiate(asteroidConfiguration));
         var powerUpFactory = new PowerUpFactory(Instantiate(powerUpConfiguration));
         var laserFactory = new LaserFactory(Instantiate(laserConfiguration));
-        gameFactory = new GameFactory(asteroidFactory, powerUpFactory, laserFactory);       
-        //entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        //var world = World.DefaultGameObjectInjectionWorld;
-        //var conversionSystem = world.GetExistingSystem<GameObjectConversionSystem>();       
+        var ovniFactory = new OvniFactory(Instantiate(ovniConfiguration));
+        var explosionFactory = new ExplosionFactory(Instantiate(explosionConfiguration));
+        var shieldFactory = new ShieldFactory(Instantiate(shieldConfiguration));
+        gameFactory = new GameFactory(asteroidFactory, powerUpFactory, laserFactory, ovniFactory, explosionFactory, shieldFactory);                   
         settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, new BlobAssetStore());
         random = new Unity.Mathematics.Random(56);
-    }
-
-    void Start()
-    {
-        
-
-        
-    }
-
-    public Entity CreateObject(int type,string id,Vector3 position,Transform container)
+    }    
+    
+    public Entity CreateObject(int type,string id,Vector3 position)
     {        
         switch (type)
         {
             case ASTEROID:
-                objectCreate = gameFactory.CreateAsteroid(id, position, container);
+                objectCreate = gameFactory.CreateAsteroid(id, position);
                 enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
                 objectEntity = SpawnWave(position);
                 break;
             case POWERUP:
                 objectCreate = gameFactory.CreatePowerUp(id);
                 enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
-                SpawnPowerUp();
+                objectEntity = SpawnPowerUp();
                 break;
             case LASER:
-                objectCreate = gameFactory.CreateLaser(id, position, container);
+                objectCreate = gameFactory.CreateLaser(id, position);
                 enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
                 SpawnLaser();
+                break;
+            case OVNI:
+                objectCreate = gameFactory.CreateOvni(id, position);
+                enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
+                objectEntity = SpawnOvni();
+                break;
+            case SHIELD:
+                objectCreate = gameFactory.CreateShield(int.Parse(id), position);
+                enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
+                objectEntity = SpawnShield();
                 break;
         }
 
         return objectEntity;
     }
 
-    private void SpawnPowerUp()
+    public GameObject CreateNotEntityObject(int type, int id, Vector3 position)
     {
-        
-        var powerUpEntity = GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
-        GameManager.Instance.entityManager.SetComponentData(powerUpEntity, new Translation { Value = new float3(random.NextFloat(-5f, 5f), random.NextFloat(-5f, 5f), 0) });
+        switch (type)
+        {            
+            case EXPLOSION:
+                objectCreate = gameFactory.CreateExplosion(id, position);                
+                break;
+        }
+
+        return objectCreate;
+    }
+
+    private Entity SpawnPowerUp()
+    {
+
+        return GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
+    }
+
+    private Entity SpawnExplosion()
+    {
+
+        return GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
+    }
+
+    private Entity SpawnOvni()
+    {
+
+        return GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
+    }
+
+    private Entity SpawnShield()
+    {
+
+        return GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
     }
 
     float[] x_pos = new float[] { 0f, -12f, 0.5f, 15f };
@@ -134,11 +169,11 @@ public class GameFactoryManager : MonoBehaviour
         {           
             enemyArray[i] = GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
 
-            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new Translation { Value = GameManager.Instance.GetPlayerTransform().position });
-            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new Rotation { Value = Quaternion.Euler(GameManager.Instance.GetPlayerTransform().rotation.eulerAngles) }); ;
+            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new Translation { Value = PlayerManager.Instance.GetPlayerTransform().position });
+            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new Rotation { Value = Quaternion.Euler(PlayerManager.Instance.GetPlayerTransform().rotation.eulerAngles) }); ;
 
             GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new MoveLaserComponent { speed = Random.Range(10f, 12f) });
-            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new MoveLaserComponent { playerPosition = GameManager.Instance.GetPlayerTransform().position });            
+            GameManager.Instance.entityManager.SetComponentData(enemyArray[i], new MoveLaserComponent { playerPosition = PlayerManager.Instance.GetPlayerTransform().position });            
         }
        
         enemyArray.Dispose();

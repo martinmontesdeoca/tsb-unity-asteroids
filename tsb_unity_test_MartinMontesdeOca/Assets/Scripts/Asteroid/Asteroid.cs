@@ -30,7 +30,7 @@ public class Asteroid : FactoryObject
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+       /* if (other.tag == "Player")
         {
             PlayerController player = other.GetComponent<PlayerController>();
             //player.Damage();
@@ -44,7 +44,7 @@ public class Asteroid : FactoryObject
             //_UIManager.UpdateScore(10);
             Destroy(other.gameObject);
 
-        }
+        }*/
 
         //Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
         
@@ -55,7 +55,7 @@ public class Asteroid : FactoryObject
         for (int i = 0; i < 2; i++)
         {
             var randomId = Random.Range(1, 2);
-            GameFactoryManager.Instance.CreateObject(GameFactoryManager.ASTEROID, "Medium" + randomId, transform.position, null);
+            GameFactoryManager.Instance.CreateObject(GameFactoryManager.ASTEROID, "Medium" + randomId, transform.position);
         }
         
     }

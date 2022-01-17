@@ -10,13 +10,9 @@ public class LaserFactory : MonoBehaviour
         this.laserConfiguration = laserConfiguration;
     }
 
-    public Laser Create(string id, Vector3 position, Transform container)
+    public Laser Create(string id, Vector3 position)
     {
-        var laser = laserConfiguration.GetLaserFromId(id);
-
-        if (!container)
-            return laser;// Instantiate(laser, position, Quaternion.identity);
-        else
-            return laser;// Instantiate(laser, container.position, container.rotation, container);
+        var laser = laserConfiguration.GetLaserFromId(id);       
+        return laser;// Instantiate(laser, container.position, container.rotation, container);
     }
 }

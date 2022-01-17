@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lasers:
   - {fileID: 7919537735984321163, guid: 6ed5202e620c36142a0d793e942099ee, type: 3}
+  - {fileID: 8450559095631321969, guid: 6091c1f354fd8314ab997f493e7ec429, type: 3}
+  - {fileID: 1809005073465438073, guid: 93e4271d896bb6a478b9089b9e1d5ed7, type: 3}

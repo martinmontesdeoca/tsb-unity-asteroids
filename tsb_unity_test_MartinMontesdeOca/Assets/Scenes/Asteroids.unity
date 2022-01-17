@@ -123,76 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &417643902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 417643903}
-  - component: {fileID: 417643905}
-  - component: {fileID: 417643904}
-  - component: {fileID: 417643906}
-  m_Layer: 0
-  m_Name: GameFactory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &417643903
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417643902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1510216406}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &417643904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417643902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e0872d602717a749a8775c8f6309bef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &417643905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417643902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf64a061798be84ca0ad7211188465b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 2
---- !u!114 &417643906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417643902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59cb7c617f5efe44bb69fa4dbe478c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +242,6 @@ Transform:
   m_Children:
   - {fileID: 853312215}
   - {fileID: 519420032}
-  - {fileID: 417643903}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,9 +273,33 @@ MonoBehaviour:
   asteroidConfiguration: {fileID: 11400000, guid: 5be1602210468c54c99f22748c14bade, type: 2}
   powerUpConfiguration: {fileID: 11400000, guid: cc87dde0224dbf14194d895fe1bebe96, type: 2}
   laserConfiguration: {fileID: 11400000, guid: b7d30773f83a9934ba35f3f2ca7f66a1, type: 2}
-  asteroidSpawner: {fileID: 417643905}
-  powerUpSpawner: {fileID: 417643904}
-  laserSpawner: {fileID: 417643906}
+  ovniConfiguration: {fileID: 11400000, guid: a72f6d90a6b66b342a8f6fd9cd41cc58, type: 2}
+  explosionConfiguration: {fileID: 11400000, guid: b139190760a4fa045b268a653d20eb50, type: 2}
+  shieldConfiguration: {fileID: 11400000, guid: c8c801dea764fbf43abfe9797905edc8, type: 2}
+--- !u!1 &2020962365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5839113233600850083, guid: 8a7e8543d1f3eb141b2d905cea1bbdb9, type: 3}
+  m_PrefabInstance: {fileID: 7835000130622784950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2020962366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020962365}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c9e6f21884ed594fb28418300f08c16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7835000130622784950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,9 +351,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3615919382654730195, guid: 8a7e8543d1f3eb141b2d905cea1bbdb9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5839113233600850083, guid: 8a7e8543d1f3eb141b2d905cea1bbdb9, type: 3}
       propertyPath: m_Name
-      value: playerShip1_blue
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839113233600850083, guid: 8a7e8543d1f3eb141b2d905cea1bbdb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6153548286066100395, guid: 8a7e8543d1f3eb141b2d905cea1bbdb9, type: 3}
       propertyPath: m_GravityScale

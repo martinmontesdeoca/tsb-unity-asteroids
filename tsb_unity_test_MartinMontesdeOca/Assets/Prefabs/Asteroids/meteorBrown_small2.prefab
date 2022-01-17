@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1966350627435894011}
   - component: {fileID: 4350563606035316928}
   - component: {fileID: 3379427334529349520}
-  - component: {fileID: -4232975888980781642}
   - component: {fileID: -1521773862282476722}
   - component: {fileID: 8480160049268784305}
   - component: {fileID: 7861463050757554021}
   - component: {fileID: 9028130311349492925}
   - component: {fileID: -6325574188934321166}
+  - component: {fileID: -4500200084174337626}
   m_Layer: 0
   m_Name: meteorBrown_small2
   m_TagString: Untagged
@@ -103,27 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   id: Small2
---- !u!50 &-4232975888980781642
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7513742086781972101}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &-1521773862282476722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +122,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7513742086781972101}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -178,7 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  forceSide: '"left"'
+  forceSide: 0
+  rotation: 50
 --- !u!114 &-6325574188934321166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +171,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d041ff6a2595e944b7c95233a3ff497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4500200084174337626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7513742086781972101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e00e3c391a8c5e4d9d2713a2366f0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}

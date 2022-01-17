@@ -10,12 +10,8 @@ public class AsteroidFactory : MonoBehaviour
         this.asteroidConfiguration = asteroidConfiguration;
     }
 
-    public Asteroid Create(string id, Vector3 position, Transform container)
-    {
-        var asteroid = asteroidConfiguration.GetAsteroidFromId(id);
-        if (!container)
-            return asteroid;// Instantiate(asteroid,position,Quaternion.identity);
-        else
-            return asteroid;// Instantiate(asteroid, position, Quaternion.identity, container);
+    public Asteroid Create(string id, Vector3 position)
+    {        
+        return asteroidConfiguration.GetAsteroidFromId(id);
     }
 }

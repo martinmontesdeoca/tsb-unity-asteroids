@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
     public EntityManager entityManager;
-   // EntityManager manager;
+    private bool resetGame = false;
     private void Awake()
     {
         main = this;
@@ -32,19 +32,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static bool IsGameOver()
-    {
-        if (GameManager.Instance == null)
-        {
-            return false;
-        }
-
-        return false;
+    public bool IsResetGame {
+        get { return resetGame; }
+        set { resetGame = value; }
     }
-
-    public Transform GetPlayerTransform()
+   
+    public void ResetGame()
     {
-        return playerTransform;
+        IsResetGame = true;
+        PlayerManager.Instance.Reset();
     }
 
     void Start()
