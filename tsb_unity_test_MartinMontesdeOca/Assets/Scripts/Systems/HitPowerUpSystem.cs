@@ -2,9 +2,6 @@
 using Unity.Transforms;
 using Unity.Mathematics;
 
-/// <summary>
-/// System for destroying Enemy Entities and the Player
-/// </summary>
 public class HitPowerUpSystem : ComponentSystem
 {  
     float minDistance = 0.8f;   
@@ -25,7 +22,7 @@ public class HitPowerUpSystem : ComponentSystem
                 if(powerUpTag.id == 0)
                     PlayerManager.Instance.SetLaserType();
                 else
-                    GameFactoryManager.Instance.CreateObject(GameFactoryManager.SHIELD, 0.ToString(), PlayerManager.Instance.GetPlayerTransform().position);
+                    GameFactoryManager.Instance.CreateObject(GameFactoryManager.SHIELD, 0, PlayerManager.Instance.GetPlayerTransform().position);
 
                 GameManager.Instance.entityManager.SetComponentData(powerUp, new DestroyEntityComponent { entity = powerUp });               
             }                       

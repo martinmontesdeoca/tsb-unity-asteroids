@@ -20,22 +20,22 @@ public class GameFactory
         this.shieldFactory = shieldFactory;
     }
 
-    public GameObject CreateAsteroid(string id, Vector3 position)
+    public GameObject CreateAsteroid(int id, Vector3 position)
     {
         return asteroidFactory.Create(id, position).gameObject;
     }
 
-    public GameObject CreatePowerUp(string id)
+    public GameObject CreatePowerUp(int id)
     {
         return powerUpFactory.Create(id).gameObject;
     }
 
-    public GameObject CreateLaser(string id, Vector3 position)
+    public GameObject CreateLaser(int id, Vector3 position)
     {
         return laserFactory.Create(id, position).gameObject;
     }
 
-    public GameObject CreateOvni(string id, Vector3 position)
+    public GameObject CreateOvni(int id, Vector3 position)
     {
         return ovniFactory.Create(id).gameObject;
     }

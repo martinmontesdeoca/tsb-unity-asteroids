@@ -2,9 +2,6 @@
 using Unity.Transforms;
 using Unity.Mathematics;
 
-/// <summary>
-/// System for destroying Enemy Entities and the Player
-/// </summary>
 public class HitOvniSystem : ComponentSystem
 {  
     float minDistance = 0.6f;   

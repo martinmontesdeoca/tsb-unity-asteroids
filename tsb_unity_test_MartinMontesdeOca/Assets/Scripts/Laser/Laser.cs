@@ -7,20 +7,6 @@ public class Laser : FactoryObject
     [SerializeField]
     private float speed = 10f;
     [SerializeField]
-    private string id;
-    public string Id => id;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*transform.Translate(Vector3.up * speed * Time.deltaTime);
-
-        if (transform.position.y > 5.41f)
-            Destroy(transform.gameObject);*/
-    }
+    private int id;
+    public int Id => id;  
 }

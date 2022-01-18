@@ -8,18 +8,18 @@ public class LaserConfiguration : ScriptableObject
 {
     [SerializeField]
     private Laser[] lasers;
-    private Dictionary<string, Laser> laserArray;
+    private Dictionary<int, Laser> laserArray;
 
     void Awake()
     {
-        laserArray = new Dictionary<string, Laser>();
+        laserArray = new Dictionary<int, Laser>();
         foreach (var laser in lasers)
         {
             laserArray.Add(laser.Id, laser);
         }
     }
 
-    public Laser GetLaserFromId(string id)
+    public Laser GetLaserFromId(int id)
     {
         if (!laserArray.TryGetValue(id, out var laser))
         {

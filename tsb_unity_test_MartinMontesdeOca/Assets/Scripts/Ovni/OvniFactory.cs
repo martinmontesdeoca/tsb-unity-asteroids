@@ -10,7 +10,7 @@ public class OvniFactory : MonoBehaviour
         this.ovniConfiguration = ovniConfiguration;
     }
 
-    public Ovni Create(string id)
+    public Ovni Create(int id)
     {       
         return ovniConfiguration.GetOvniFromId(id);
     }

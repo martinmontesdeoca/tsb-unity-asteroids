@@ -8,18 +8,18 @@ public class AsteroidConfiguration : ScriptableObject
 {
     [SerializeField]
     private Asteroid[] asteroids;
-    private Dictionary<string, Asteroid> asteroidsArray;
+    private Dictionary<int, Asteroid> asteroidsArray;
 
     void Awake()
     {
-        asteroidsArray = new Dictionary<string, Asteroid>();
+        asteroidsArray = new Dictionary<int, Asteroid>();
         foreach (var asteroid in asteroids)
         {
             asteroidsArray.Add(asteroid.Id, asteroid);
         }
     }
 
-    public Asteroid GetAsteroidFromId(string id)
+    public Asteroid GetAsteroidFromId(int id)
     {
         if (!asteroidsArray.TryGetValue(id, out var asteroid))
         {

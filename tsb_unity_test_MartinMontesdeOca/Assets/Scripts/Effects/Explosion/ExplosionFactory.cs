@@ -11,7 +11,8 @@ public class ExplosionFactory : MonoBehaviour
     }
 
     public Explosion Create(int id, Vector3 position)
-    {       
+    {
+        SoundManager.Instance.PlaySound("sfx_Explosion", true);
         return explosionConfiguration.GetExplosionFromId(id, position);
     }
 }

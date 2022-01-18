@@ -8,18 +8,18 @@ public class PowerUpConfiguration : ScriptableObject
 {
     [SerializeField]
     private PowerUp[] powerUps;
-    private Dictionary<string, PowerUp> powerUpsArray;
+    private Dictionary<int, PowerUp> powerUpsArray;
 
     void Awake()
     {
-        powerUpsArray = new Dictionary<string, PowerUp>();
+        powerUpsArray = new Dictionary<int, PowerUp>();
         foreach (var powerUp in powerUps)
         {
             powerUpsArray.Add(powerUp.Id, powerUp);
         }
     }
 
-    public PowerUp GetPowerUpFromId(string id)
+    public PowerUp GetPowerUpFromId(int id)
     {
         if (!powerUpsArray.TryGetValue(id, out var powerUp))
         {

@@ -10,7 +10,7 @@ public class PowerUpFactory : MonoBehaviour
         this.powerUpConfiguration = powerUpConfiguration;
     }
 
-    public PowerUp Create(string id)
+    public PowerUp Create(int id)
     {       
         return powerUpConfiguration.GetPowerUpFromId(id);
     }

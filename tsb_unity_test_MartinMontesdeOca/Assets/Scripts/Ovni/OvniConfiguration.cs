@@ -8,18 +8,18 @@ public class OvniConfiguration : ScriptableObject
 {
     [SerializeField]
     private Ovni[] ovni;
-    private Dictionary<string, Ovni> ovniArray;
+    private Dictionary<int, Ovni> ovniArray;
 
     void Awake()
     {
-        ovniArray = new Dictionary<string, Ovni>();
+        ovniArray = new Dictionary<int, Ovni>();
         foreach (var ovni in ovni)
         {
             ovniArray.Add(ovni.Id, ovni);
         }
     }
 
-    public Ovni GetOvniFromId(string id)
+    public Ovni GetOvniFromId(int id)
     {
         if (!ovniArray.TryGetValue(id, out var ovni))
         {

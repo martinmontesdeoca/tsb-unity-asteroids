@@ -6,9 +6,13 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private float _fireRate = 0.25f;
-    private float _canFire = 0.0f;
+    private float _canFire = 0.25f;
     private int laserType = 0;
+    private bool onHyperspace = false;
+    private bool onShoot = false;
     private Animator animator;
+    private Rigidbody2D rigidBody;
+
     private void Awake()
     {
         _instance = this;
@@ -17,7 +21,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-       // GameFactoryManager.Instance.CreateObject(GameFactoryManager.SHIELD, 0.ToString(), GetPlayerTransform().position);
+        rigidBody = transform.GetComponent<Rigidbody2D>();
     }
 
     private static PlayerManager _instance;
@@ -33,12 +37,34 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public bool OnHyperspace
+    {
+        get { return onHyperspace; }
+        set { onHyperspace = value; }
+    }
+
+    public bool OnShoot
+    {
+        get { return onShoot; }
+        set { onShoot = value; }
+    }
+
+    public int LaserType
+    {
+        get { return laserType; }
+        set { laserType = value; }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
-        {           
-            Shoot();            
+        {
+            Shoot();
         }
+        else if (Input.GetKeyDown(KeyCode.H))
+            JumpToHyperspace();
+        else if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+            StopShoot();
     }
 
     public void Reset()
@@ -46,7 +72,10 @@ public class PlayerManager : MonoBehaviour
         GameFactoryManager.Instance.CreateNotEntityObject(GameFactoryManager.EXPLOSION, 0, transform.position);
         animator.SetBool("reset", true);
         StartCoroutine("StopResetAnim");
-        transform.position = Vector3.zero;
+        //transform.position = Vector3.zero;
+        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        rigidBody.angularVelocity = 0;
+        rigidBody.velocity =Vector2.zero;
     }
 
     IEnumerator StopResetAnim()
@@ -63,17 +92,42 @@ public class PlayerManager : MonoBehaviour
 
     public void SetLaserType()
     {
-        laserType++;
-        if (laserType > 2)
-            laserType = 0;
+        LaserType++;       
+        if (LaserType > 2)
+            LaserType = 0;
+    }
+
+    private void JumpToHyperspace()
+    {
+        SoundManager.Instance.PlaySound("sfx_Teleportation Jump");
+        OnHyperspace = true;        
+        transform.position = new Vector3(UnityEngine.Random.Range(9.5f, -9.5f), UnityEngine.Random.Range(5.5f, -5.5f));
+        animator.SetBool("hyperspace", true);
+        StartCoroutine("StopHyperspaceAnim");
+    }
+
+    IEnumerator StopHyperspaceAnim()
+    {
+        yield return new WaitForSeconds(2);
+        animator.SetBool("hyperspace", false);        
+       
+        var randomDestroy = UnityEngine.Random.Range(0, 10);
+        if(randomDestroy > 5)
+        {
+            GameFactoryManager.Instance.CreateNotEntityObject(GameFactoryManager.EXPLOSION, 0, transform.position);
+            GameManager.Instance.ResetGame();
+        }
+
+        OnHyperspace = false;
     }
 
     private void Shoot()
     {
-        if (Time.time > _canFire)
-        {           
-            GameFactoryManager.Instance.CreateObject(GameFactoryManager.LASER, laserType.ToString(), Vector3.up);
-            _canFire = Time.time + _fireRate;
-        }
+        OnShoot = true;
+    }
+
+    private void StopShoot()
+    {
+        OnShoot = false;
     }
 }

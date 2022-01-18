@@ -24,16 +24,21 @@ class OvniSpawnSystem : ComponentSystem
     protected override void OnCreate()
     {
         base.OnCreate();
-        ovniArray = new NativeList<Entity>(1, Allocator.Persistent);        
-    }       
+        ovniArray = new NativeList<Entity>(2, Allocator.Persistent);        
+    }
+
+    protected override void OnDestroy()
+    {
+        ovniArray.Dispose();
+    }
 
     protected override void OnUpdate()
     {
         m_ElapsedTime += Time.DeltaTime;
-        if (m_ElapsedTime > 1f)
+        if (m_ElapsedTime > 2f)
         {
             m_ElapsedTime = 0;
-            if (ovniArray.Length < 1)
+            if (ovniArray.Length < 2)
             {
                 CreateOvni();
             }
@@ -52,32 +57,14 @@ class OvniSpawnSystem : ComponentSystem
     private void DestroyOvni(Entity ovni, float3 position)
     {
         GameFactoryManager.Instance.CreateNotEntityObject(GameFactoryManager.EXPLOSION, 0, new Vector3(position.x, position.y));
-        var index = ovniArray.IndexOf<Entity, Entity>(ovni);        
-        //PostUpdateCommands.DestroyEntity(asteroidArray[index]);
-        PostUpdateCommands.DestroyEntity(ovni);
+        var index = ovniArray.IndexOf<Entity, Entity>(ovni);
+        GameManager.Instance.entityManager.DestroyEntity(ovni);       
         ovniArray.RemoveAt(index);        
-    }
-
-    private int SetForceSide(Vector3 position, Entity asteroid)
-    {
-        var side = 0;
-
-        if (position.x == 0f)
-            side = 0;
-        else if (position.x == -12f)
-            side = 1;
-        else if (position.x == 0.5f)
-            side = 2;
-        else
-            side = 3;
-
-        return side;
-
-    }
+    }    
 
     private void CreateOvni()
     {
-        var randomPos = sideCount;// UnityEngine.Random.Range(0, 4);        
+        var randomPos = sideCount;       
         var randomId = UnityEngine.Random.Range(0, 2);
        
         if (randomPos == 0)
@@ -105,14 +92,13 @@ class OvniSpawnSystem : ComponentSystem
         }
 
         var position = new Vector3(xPos, yPos, 0);
-        ovni = GameFactoryManager.Instance.CreateObject(GameFactoryManager.OVNI, randomId.ToString(), position);
+        ovni = GameFactoryManager.Instance.CreateObject(GameFactoryManager.OVNI, randomId, position);
         GameManager.Instance.entityManager.SetComponentData(ovni, new Translation { Value = position });
-        GameManager.Instance.entityManager.SetComponentData(ovni, new MoveComponent { forceSide = /*SetForceSide(position, asteroid)*/sideCount, speed = UnityEngine.Random.Range(1f, 3f) });
+        GameManager.Instance.entityManager.SetComponentData(ovni, new MoveComponent { forceSide = sideCount, speed = UnityEngine.Random.Range(1f, 3f) });
         ovniArray.Add(ovni);
         sideCount++;
         if (sideCount > 3) sideCount = 0;
-        // asteroidArray.Dispose();
-
+        
         Debug.Log("Ovni Create --- ovniArray: " + ovniArray.Length);
     }
 }

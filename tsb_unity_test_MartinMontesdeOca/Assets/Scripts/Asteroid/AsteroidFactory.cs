@@ -10,7 +10,7 @@ public class AsteroidFactory : MonoBehaviour
         this.asteroidConfiguration = asteroidConfiguration;
     }
 
-    public Asteroid Create(string id, Vector3 position)
+    public Asteroid Create(int id, Vector3 position)
     {        
         return asteroidConfiguration.GetAsteroidFromId(id);
     }

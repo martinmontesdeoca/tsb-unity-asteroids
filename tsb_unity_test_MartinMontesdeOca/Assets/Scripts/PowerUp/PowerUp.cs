@@ -5,6 +5,6 @@ using UnityEngine;
 public class PowerUp : FactoryObject
 {
     [SerializeField]
-    protected string id;
-    public string Id => id;
+    protected int id;
+    public int Id => id;
 }

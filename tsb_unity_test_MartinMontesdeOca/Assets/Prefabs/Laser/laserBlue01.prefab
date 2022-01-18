@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4126360116146558700}
   - component: {fileID: 2224241967974294385}
   - component: {fileID: 5887991832303604703}
+  - component: {fileID: 3450490132707407300}
   m_Layer: 0
   m_Name: laserBlue01
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e2b1d08915a819e489acbed8c500a843, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bd7b9e694fac48b2f902a29fab73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 2
+  Value: 1
 --- !u!114 &2224241967974294385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +155,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208a9528ab88e714097cbd7352e35f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3450490132707407300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022382844597952218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e00e3c391a8c5e4d9d2713a2366f0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}

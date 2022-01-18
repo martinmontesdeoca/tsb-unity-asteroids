@@ -3,12 +3,10 @@ using Unity.Transforms;
 using Unity.Mathematics;
 using System.Numerics;
 
-/// <summary>
-/// System for destroying Enemy Entities and the Player
-/// </summary>
 public class HitAsteroidSystem : ComponentSystem
 {  
-    float minDistance = 0.5f;   
+    float minDistance = 0.5f;
+    float minDistanceShield = 1f;
     protected override void OnCreate()
     {
         base.OnCreate();        
@@ -38,7 +36,7 @@ public class HitAsteroidSystem : ComponentSystem
 
             Entities.WithAll<ShieldTag>().ForEach((Entity bullet, ref Translation shield) =>
             {
-                if (math.distance(enemyPosition, shield.Value) <= minDistance)
+                if (math.distance(enemyPosition, shield.Value) <= minDistanceShield)
                 {
                     GameManager.Instance.entityManager.SetComponentData(asteroid, new DestroyEntityComponent { entity = asteroid });                   
                 }

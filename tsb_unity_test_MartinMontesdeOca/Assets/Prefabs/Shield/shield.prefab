@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7318934536028808902}
   - component: {fileID: 7607962373691005415}
   - component: {fileID: 2425125732221544916}
+  - component: {fileID: -7972552809423122815}
   m_Layer: 0
   m_Name: shield
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dfcc0c31766ec0842861e5ba6f41ca3d, type: 3}
   m_Color: {r: 0.05899461, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -136,4 +137,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5bd7b9e694fac48b2f902a29fab73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 5
+  Value: 10
+--- !u!114 &-7972552809423122815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101504840864989196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e00e3c391a8c5e4d9d2713a2366f0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}

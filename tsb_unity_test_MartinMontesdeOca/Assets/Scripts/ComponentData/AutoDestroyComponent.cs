@@ -4,7 +4,7 @@ using Unity.Entities;
 /// Defines a duration for removing an Entity.
 /// </summary>
 [GenerateAuthoringComponent]
-public struct LifetimeComponent : IComponentData
+public struct AutoDestroyComponent : IComponentData
 {   
     public float Value;
 }

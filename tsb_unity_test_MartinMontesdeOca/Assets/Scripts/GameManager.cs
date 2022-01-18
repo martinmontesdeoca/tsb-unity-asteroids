@@ -14,9 +14,7 @@ public class GameManager : MonoBehaviour
     {
         main = this;
         _instance = this;
-        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        //  manager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;       
     }
 
     private static GameManager _instance;
@@ -39,18 +37,8 @@ public class GameManager : MonoBehaviour
    
     public void ResetGame()
     {
+        SoundManager.Instance.PlaySound("sfx_lose", true);
         IsResetGame = true;
         PlayerManager.Instance.Reset();
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }    
 }
