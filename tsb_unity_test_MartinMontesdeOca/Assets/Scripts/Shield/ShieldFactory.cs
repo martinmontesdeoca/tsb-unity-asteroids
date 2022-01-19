@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class ShieldFactory : MonoBehaviour
@@ -10,7 +11,7 @@ public class ShieldFactory : MonoBehaviour
         this.shieldConfiguration = shieldConfiguration;
     }
 
-    public Shield Create(int id, Vector3 position)
+    public Entity Create(int id, Vector3 position)
     {       
         return shieldConfiguration.GetShieldFromId(id);
     }

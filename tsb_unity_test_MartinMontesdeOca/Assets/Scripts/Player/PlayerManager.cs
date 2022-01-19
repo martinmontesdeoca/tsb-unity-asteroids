@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         {
             Shoot();
         }
-        else if (Input.GetKeyDown(KeyCode.H))
+        else if (Input.GetKeyDown(KeyCode.H) && !OnHyperspace)
             JumpToHyperspace();
         else if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
             StopShoot();

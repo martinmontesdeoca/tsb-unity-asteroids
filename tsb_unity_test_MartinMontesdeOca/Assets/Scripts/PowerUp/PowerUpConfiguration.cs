@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Entities;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Custom/PowerUp configuration")]
@@ -8,24 +10,29 @@ public class PowerUpConfiguration : ScriptableObject
 {
     [SerializeField]
     private PowerUp[] powerUps;
-    private Dictionary<int, PowerUp> powerUpsArray;
+    private Entity powerUpEntity;
+    private NativeList<Entity> powerUpEntitysArray;
 
     void Awake()
     {
-        powerUpsArray = new Dictionary<int, PowerUp>();
-        foreach (var powerUp in powerUps)
+        powerUpEntitysArray = new NativeList<Entity>(powerUps.Length, Allocator.Persistent);
+        foreach (var asteroid in powerUps)
         {
-            powerUpsArray.Add(powerUp.Id, powerUp);
+            powerUpEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(asteroid.gameObject, GameManager.Instance.settingsEntityManager);
+            powerUpEntitysArray.Add(powerUpEntity);
         }
     }
 
-    public PowerUp GetPowerUpFromId(int id)
+    void OnDestroy()
     {
-        if (!powerUpsArray.TryGetValue(id, out var powerUp))
-        {
-            throw new Exception("The PowerUp id not exits");
-        }
+        powerUpEntitysArray.Dispose();
+    }
 
-        return powerUp;
+    public Entity GetPowerUpFromId(int id)
+    {
+        if (powerUpEntitysArray[id] == null)
+            throw new Exception("The PowerUp id not exits");
+
+        return powerUpEntitysArray[id];
     }
 }

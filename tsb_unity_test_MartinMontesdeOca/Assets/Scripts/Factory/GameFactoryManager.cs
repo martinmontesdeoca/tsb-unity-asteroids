@@ -33,9 +33,10 @@ public class GameFactoryManager : MonoBehaviour
     private Entity enemyEntityPrefab;
     private Entity objectEntity;
     private EntityManager entityManager;
-    private GameObjectConversionSettings settings;
+    //private GameObjectConversionSettings settings;
     private GameObject objectCreate;
-    private GameFactory gameFactory;    
+    private GameFactory gameFactory;
+    //private BlobAssetStore blobAssetStore;
     private static GameFactoryManager _instance;
     public static GameFactoryManager Instance
     {
@@ -58,48 +59,54 @@ public class GameFactoryManager : MonoBehaviour
         var ovniFactory = new OvniFactory(Instantiate(ovniConfiguration));
         var explosionFactory = new ExplosionFactory(Instantiate(explosionConfiguration));
         var shieldFactory = new ShieldFactory(Instantiate(shieldConfiguration));
-        gameFactory = new GameFactory(asteroidFactory, powerUpFactory, laserFactory, ovniFactory, explosionFactory, shieldFactory);                   
-        settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, new BlobAssetStore());       
-    }    
-    
+        gameFactory = new GameFactory(asteroidFactory, powerUpFactory, laserFactory, ovniFactory, explosionFactory, shieldFactory);
+       // blobAssetStore = new BlobAssetStore();
+       // settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, blobAssetStore);       
+    }
+
+    private void OnDestroy()
+    {
+       // blobAssetStore.Dispose();
+    }
+
     public Entity CreateObject(int type,int id,Vector3 position)
     {        
         switch (type)
         {
             case ASTEROID:
-                objectCreate = gameFactory.CreateAsteroid(id, position);                
+                enemyEntityPrefab = gameFactory.CreateAsteroid(id, position);                
                 break;
-            case POWERUP:                
-                objectCreate = gameFactory.CreatePowerUp(id);                
+            case POWERUP:
+                enemyEntityPrefab = gameFactory.CreatePowerUp(id);                
                 break;
             case LASER:
-                objectCreate = gameFactory.CreateLaser(id, position);                
+                enemyEntityPrefab = gameFactory.CreateLaser(id, position);                
                 break;
-            case OVNI:                
-                objectCreate = gameFactory.CreateOvni(id, position);               
+            case OVNI:
+                enemyEntityPrefab = gameFactory.CreateOvni(id, position);               
                 break;
             case SHIELD:
                 SoundManager.Instance.PlaySound("sfx_shieldUp");
-                objectCreate = gameFactory.CreateShield(id, position);               
+                enemyEntityPrefab = gameFactory.CreateShield(id, position);               
                 break;
         }
 
-        enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
+       // enemyEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(objectCreate, settings);
         return GameManager.Instance.entityManager.Instantiate(enemyEntityPrefab);
     }
-
-    public GameObject CreateObject2(int type, int id, Vector3 position)
+    
+    /*public GameObject CreateObject2(int type, int id, Vector3 position)
     {
         switch (type)
         {
             case ASTEROID:
-                objectCreate = gameFactory.CreateAsteroid(id, position);
+               //objectCreate = gameFactory.CreateAsteroid(id, position);
                 break;
             case POWERUP:
                 objectCreate = gameFactory.CreatePowerUp(id);
                 break;
             case LASER:
-                objectCreate = gameFactory.CreateLaser(id, position);
+                //objectCreate = gameFactory.CreateLaser(id, position);
                 break;
             case OVNI:
                 objectCreate = gameFactory.CreateOvni(id, position);
@@ -111,7 +118,7 @@ public class GameFactoryManager : MonoBehaviour
 
         
         return objectCreate;
-    }
+    }*/
 
     public GameObject CreateNotEntityObject(int type, int id, Vector3 position)
     {

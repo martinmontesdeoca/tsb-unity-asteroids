@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8959045866649536767}
   - component: {fileID: 8323642655223757032}
   - component: {fileID: 5197748585694845380}
+  - component: {fileID: 6902236077843940485}
   m_Layer: 0
   m_Name: ufoBlue
   m_TagString: Untagged
@@ -153,3 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50434be5437c3b438de6d9e2715ff67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6902236077843940485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673124601922308920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aab135c7ae0f4348bd70dba8a598b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  shoot: 0

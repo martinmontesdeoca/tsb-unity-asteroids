@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class GameFactory
@@ -20,24 +21,24 @@ public class GameFactory
         this.shieldFactory = shieldFactory;
     }
 
-    public GameObject CreateAsteroid(int id, Vector3 position)
+    public Entity CreateAsteroid(int id, Vector3 position)
     {
-        return asteroidFactory.Create(id, position).gameObject;
+        return asteroidFactory.Create(id, position);
     }
 
-    public GameObject CreatePowerUp(int id)
+    public Entity CreatePowerUp(int id)
     {
-        return powerUpFactory.Create(id).gameObject;
+        return powerUpFactory.Create(id);
     }
 
-    public GameObject CreateLaser(int id, Vector3 position)
+    public Entity CreateLaser(int id, Vector3 position)
     {
-        return laserFactory.Create(id, position).gameObject;
+        return laserFactory.Create(id, position);
     }
 
-    public GameObject CreateOvni(int id, Vector3 position)
+    public Entity CreateOvni(int id, Vector3 position)
     {
-        return ovniFactory.Create(id).gameObject;
+        return ovniFactory.Create(id);
     }
 
     public GameObject CreateExplosion(int id, Vector3 position)
@@ -45,8 +46,8 @@ public class GameFactory
         return explosionFactory.Create(id, position).gameObject;
     }
 
-    public GameObject CreateShield(int id, Vector3 position)
+    public Entity CreateShield(int id, Vector3 position)
     {
-        return shieldFactory.Create(id, position).gameObject;
+        return shieldFactory.Create(id, position);
     }
 }

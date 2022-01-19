@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class AsteroidFactory : MonoBehaviour
@@ -10,7 +11,7 @@ public class AsteroidFactory : MonoBehaviour
         this.asteroidConfiguration = asteroidConfiguration;
     }
 
-    public Asteroid Create(int id, Vector3 position)
+    public Entity Create(int id, Vector3 position)
     {        
         return asteroidConfiguration.GetAsteroidFromId(id);
     }

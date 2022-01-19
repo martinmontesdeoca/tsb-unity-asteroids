@@ -35,7 +35,7 @@ class AsteroidSpawnSystem : ComponentSystem
     protected override void OnUpdate()
     {
         m_ElapsedTime += Time.DeltaTime;
-        if (m_ElapsedTime > 2f)
+        if (m_ElapsedTime > 1f)
         {
             m_ElapsedTime = 0;
             if (asteroidArray.Length < 10)
@@ -47,8 +47,7 @@ class AsteroidSpawnSystem : ComponentSystem
         Entities.WithAll<AsteroidTag>().ForEach((ref Translation trans, ref DestroyEntityComponent destroyEntity) =>
         {
             if (destroyEntity.entity != Entity.Null)
-            {
-                Debug.Log("Asteroid Destroy ---");
+            {                
                 DestroyAsteroid(destroyEntity.entity, trans.Value);
             }
         });
@@ -64,8 +63,7 @@ class AsteroidSpawnSystem : ComponentSystem
 
     private void CreateAsteroid()
     {
-        var randomPos = sideCount;
-        var randomType = UnityEngine.Random.Range(0, 3);
+        var randomPos = sideCount;       
         var randomId = UnityEngine.Random.Range(0, 7);     
 
         if (randomPos == 0)
@@ -97,9 +95,7 @@ class AsteroidSpawnSystem : ComponentSystem
         GameManager.Instance.entityManager.SetComponentData(asteroid, new MoveComponent { forceSide = sideCount, speed = UnityEngine.Random.Range(1f, 3f) });
         asteroidArray.Add(asteroid);
         sideCount++;
-        if (sideCount > 3) sideCount = 0;
-    
-        Debug.Log("Asteroid Create --- asteroidArray: " + asteroidArray.Length);
+        if (sideCount > 3) sideCount = 0;    
     }
 }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class PowerUpFactory : MonoBehaviour
@@ -10,7 +11,7 @@ public class PowerUpFactory : MonoBehaviour
         this.powerUpConfiguration = powerUpConfiguration;
     }
 
-    public PowerUp Create(int id)
+    public Entity Create(int id)
     {       
         return powerUpConfiguration.GetPowerUpFromId(id);
     }

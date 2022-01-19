@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7563590216144549155}
   - component: {fileID: 1565251069550199921}
   - component: {fileID: 1904894915907843174}
+  - component: {fileID: 7330169021330297787}
+  - component: {fileID: -708605104095270700}
   m_Layer: 0
   m_Name: ufoGreen
   m_TagString: Untagged
@@ -153,3 +155,30 @@ MonoBehaviour:
   speed: 0
   forceSide: 0
   rotation: 500
+--- !u!114 &7330169021330297787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138980964570957750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aab135c7ae0f4348bd70dba8a598b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  shoot: 0
+--- !u!114 &-708605104095270700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138980964570957750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50434be5437c3b438de6d9e2715ff67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class OvniFactory : MonoBehaviour
@@ -10,7 +11,7 @@ public class OvniFactory : MonoBehaviour
         this.ovniConfiguration = ovniConfiguration;
     }
 
-    public Ovni Create(int id)
+    public Entity Create(int id)
     {       
         return ovniConfiguration.GetOvniFromId(id);
     }

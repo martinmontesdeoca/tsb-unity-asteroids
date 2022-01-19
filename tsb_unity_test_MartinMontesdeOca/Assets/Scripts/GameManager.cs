@@ -10,11 +10,20 @@ public class GameManager : MonoBehaviour
     private Transform playerTransform;
     public EntityManager entityManager;
     private bool resetGame = false;
+    public GameObjectConversionSettings settingsEntityManager;    
+    private BlobAssetStore blobAssetStore;
     private void Awake()
     {
         main = this;
         _instance = this;
-        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;       
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        blobAssetStore = new BlobAssetStore();
+        settingsEntityManager = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, blobAssetStore);
+    }
+
+    private void OnDestroy()
+    {
+        blobAssetStore.Dispose();
     }
 
     private static GameManager _instance;
@@ -36,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
    
     public void ResetGame()
-    {
+    {        
         SoundManager.Instance.PlaySound("sfx_lose", true);
         IsResetGame = true;
         PlayerManager.Instance.Reset();

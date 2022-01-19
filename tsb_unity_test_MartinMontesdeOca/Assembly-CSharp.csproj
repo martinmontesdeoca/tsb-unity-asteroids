@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Ovni\OvniConfiguration.cs" />
     <Compile Include="Assets\Scripts\Systems\HitPowerUpSystem.cs" />
     <Compile Include="Assets\Scripts\ComponentTags\AsteroidTag.cs" />
+    <Compile Include="Assets\Scripts\ComponentData\OvniShootComponent.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\ComponentData\MoveComponent.cs" />
     <Compile Include="Assets\Scripts\Systems\AutoDestroySystem.cs" />
@@ -87,13 +88,17 @@
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Laser\Laser.cs" />
     <Compile Include="Assets\Scripts\ComponentData\AutoDestroyComponent.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Systems\LaserSpawnSystem.cs" />
     <Compile Include="Assets\Scripts\Effects\Explosion\Explosion.cs" />
+    <Compile Include="Assets\Scripts\Systems\OvniLaserSpawnSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\MovementSystem.cs" />
     <Compile Include="Assets\Scripts\Ovni\OvniFactory.cs" />
     <Compile Include="Assets\Scripts\Factory\GameFactoryManager.cs" />
     <Compile Include="Assets\Scripts\Shield\Shield.cs" />
     <Compile Include="Assets\Scripts\Asteroid\AsteroidFactory.cs" />
     <Compile Include="Assets\Scripts\Laser\LaserFactory.cs" />
+    <Compile Include="Assets\Scripts\ComponentTags\OvniLaserTag.cs" />
     <Compile Include="Assets\Scripts\PowerUp\PowerUpFactory.cs" />
     <Compile Include="Assets\Scripts\Effects\Explosion\ExplosionConfiguration.cs" />
     <Compile Include="Assets\Scripts\Factory\FactoryObject.cs" />
@@ -101,8 +106,6 @@
     <Compile Include="Assets\Scripts\ComponentTags\OvniTag.cs" />
     <Compile Include="Assets\Scripts\Effects\Explosion\ExplosionFactory.cs" />
     <Compile Include="Assets\Scripts\Systems\HitOvniSystem.cs" />
-    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\Systems\LaserSpawnSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

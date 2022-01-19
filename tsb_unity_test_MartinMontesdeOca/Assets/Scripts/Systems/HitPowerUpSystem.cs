@@ -1,10 +1,10 @@
 ﻿using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
-
+[AlwaysUpdateSystem]
 public class HitPowerUpSystem : ComponentSystem
 {  
-    float minDistance = 0.8f;   
+    float minDistance = 1f;   
     protected override void OnCreate()
     {
         base.OnCreate();        

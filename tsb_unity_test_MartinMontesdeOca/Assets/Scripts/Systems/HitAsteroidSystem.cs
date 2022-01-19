@@ -2,11 +2,11 @@
 using Unity.Transforms;
 using Unity.Mathematics;
 using System.Numerics;
-
+[AlwaysUpdateSystem]
 public class HitAsteroidSystem : ComponentSystem
 {  
-    float minDistance = 0.5f;
-    float minDistanceShield = 1f;
+    float minDistance = 1f;
+    float minDistanceShield = 1.5f;
     protected override void OnCreate()
     {
         base.OnCreate();        

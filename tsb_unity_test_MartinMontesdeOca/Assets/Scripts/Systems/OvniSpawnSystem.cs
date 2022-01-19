@@ -47,8 +47,7 @@ class OvniSpawnSystem : ComponentSystem
         Entities.WithAll<OvniTag>().ForEach((ref Translation trans, ref DestroyEntityComponent destroyEntity) =>
         {
             if (destroyEntity.entity != Entity.Null)
-            {                
-                Debug.Log("Ovni Destroy ---");
+            {                                
                 DestroyOvni(destroyEntity.entity, trans.Value);
             }
         });
@@ -97,9 +96,7 @@ class OvniSpawnSystem : ComponentSystem
         GameManager.Instance.entityManager.SetComponentData(ovni, new MoveComponent { forceSide = sideCount, speed = UnityEngine.Random.Range(1f, 3f) });
         ovniArray.Add(ovni);
         sideCount++;
-        if (sideCount > 3) sideCount = 0;
-        
-        Debug.Log("Ovni Create --- ovniArray: " + ovniArray.Length);
+        if (sideCount > 3) sideCount = 0;        
     }
 }
-//}
+

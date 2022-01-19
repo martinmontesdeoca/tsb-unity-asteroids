@@ -35,7 +35,7 @@ class PowerUpSpawnSystem : ComponentSystem
     protected override void OnUpdate()
     {
         m_ElapsedTime += Time.DeltaTime;
-        if (m_ElapsedTime > 1f)
+        if (m_ElapsedTime > 3f)
         {
             m_ElapsedTime = 0;
             if (powerUpArray.Length < 2)
@@ -47,9 +47,7 @@ class PowerUpSpawnSystem : ComponentSystem
         Entities.WithAll<PowerUpTag>().ForEach((ref DestroyEntityComponent destroyEntity) =>
         {
             if (destroyEntity.entity != Entity.Null)
-            {
-                
-                Debug.Log("PowerUp Destroy ---");
+            {                
                 DestroyPowerUp(destroyEntity.entity);
             }
         });
@@ -101,9 +99,7 @@ class PowerUpSpawnSystem : ComponentSystem
         GameManager.Instance.entityManager.SetComponentData(asteroid, new MoveComponent { forceSide = sideCount, speed = UnityEngine.Random.Range(1f, 3f) });
         powerUpArray.Add(asteroid);
         sideCount++;
-        if (sideCount > 3) sideCount = 0;
-       
-        Debug.Log("PowerUp Create --- asteroidArray: " + powerUpArray.Length);
+        if (sideCount > 3) sideCount = 0;       
     }
 }
 

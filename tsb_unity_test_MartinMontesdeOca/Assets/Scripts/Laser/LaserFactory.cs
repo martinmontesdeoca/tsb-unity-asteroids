@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Entities;
 using UnityEngine;
 
 public class LaserFactory : MonoBehaviour
@@ -10,7 +11,7 @@ public class LaserFactory : MonoBehaviour
         this.laserConfiguration = laserConfiguration;
     }
 
-    public Laser Create(int id, Vector3 position)
+    public Entity Create(int id, Vector3 position)
     {      
         return laserConfiguration.GetLaserFromId(id);
     }

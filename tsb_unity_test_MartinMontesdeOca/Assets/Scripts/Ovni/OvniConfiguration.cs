@@ -1,31 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Entities;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Custom/Ovni configuration")]
 public class OvniConfiguration : ScriptableObject
 {
     [SerializeField]
-    private Ovni[] ovni;
-    private Dictionary<int, Ovni> ovniArray;
+    private Ovni[] ovni;    
+    private Entity ovniEntity;
+    private NativeList<Entity> ovniEntitysArray;
 
     void Awake()
     {
-        ovniArray = new Dictionary<int, Ovni>();
-        foreach (var ovni in ovni)
+        ovniEntitysArray = new NativeList<Entity>(ovni.Length, Allocator.Persistent);
+        foreach (var asteroid in ovni)
         {
-            ovniArray.Add(ovni.Id, ovni);
+            ovniEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(asteroid.gameObject, GameManager.Instance.settingsEntityManager);
+            ovniEntitysArray.Add(ovniEntity);
         }
     }
 
-    public Ovni GetOvniFromId(int id)
+    void OnDestroy()
     {
-        if (!ovniArray.TryGetValue(id, out var ovni))
-        {
-            throw new Exception("The PowerUp id not exits");
-        }
+        ovniEntitysArray.Dispose();
+    }
 
-        return ovni;
+    public Entity GetOvniFromId(int id)
+    {       
+        if (ovniEntitysArray[id] == null)
+            throw new Exception("The Asteroid id not exits");
+
+        return ovniEntitysArray[id];
     }
 }
